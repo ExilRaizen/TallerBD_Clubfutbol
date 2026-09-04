@@ -5,9 +5,8 @@ Motor: Oracle / PL-SQL.
 
 ## Estructura
 
-- `script_carga/` — creación de las 12 tablas (`01_crear_tablas.sql`) y poblado de datos
-  (`02_poblar_tablas.sql`), ~2.943 filas. Deben ejecutarse en ese orden antes que cualquier
-  requerimiento.
+- `script_carga/Script de Carga.sql` — creación de las 12 tablas (DDL) y poblado de datos (DML),
+  ~2.943 filas, en un solo archivo. Debe ejecutarse completo antes que cualquier requerimiento.
 - `codigo_fuente/` — scripts de cada requerimiento técnico exigido por la pauta.
   - `Requerimiento 2.sql` — cursor explícito con parámetro sobre CLUB, con un segundo cursor
     explícito anidado sobre OFERTA/JUGADOR/CONTRATO. Genera un reporte de negociaciones y
@@ -18,6 +17,5 @@ diagrama del modelo) los agrega el resto del equipo.
 
 ## Cómo ejecutar
 
-1. `script_carga/01_crear_tablas.sql`
-2. `script_carga/02_poblar_tablas.sql`
-3. Cualquiera de los `codigo_fuente/Requerimiento N.sql`, en Oracle SQL Developer.
+1. `script_carga/Script de Carga.sql`
+2. Cualquiera de los `codigo_fuente/Requerimiento N.sql`, en Oracle SQL Developer.
