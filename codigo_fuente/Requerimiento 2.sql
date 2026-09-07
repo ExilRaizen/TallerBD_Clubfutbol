@@ -1,9 +1,5 @@
 SET SERVEROUTPUT ON;
 
--- Requerimiento 2: cursor explicito con parametro sobre CLUB, y un segundo
--- cursor explicito anidado (tambien con parametro) sobre OFERTA/CONTRATO.
--- Requiere haber ejecutado antes el Script de Carga.
-
 DECLARE
     CURSOR c_clubes(p_pais CLUB.pais%TYPE) IS
         SELECT id_club, nombre_club, liga
