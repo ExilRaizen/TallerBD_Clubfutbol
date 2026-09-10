@@ -7,7 +7,7 @@ DECLARE
         nombre        JUGADOR.nombre%TYPE,
         apellido      JUGADOR.apellido%TYPE,
         -- Campo con %TYPE en vez de tipo fijo (VARCHAR2), tal como exige la pauta para el RECORD
-        posicion      POSICION.nombre_posicion%TYPE,
+        nom_posicion  POSICION.nombre_posicion%TYPE,
         nacionalidad  JUGADOR.nacionalidad%TYPE,
         estado        JUGADOR.estado%TYPE,
         promedio      NUMBER(5,2)
@@ -38,7 +38,7 @@ BEGIN
     IF v_jugadores.COUNT > 0 THEN
         FOR i IN 1..v_jugadores.COUNT LOOP
             DBMS_OUTPUT.PUT_LINE(i || '. ' || v_jugadores(i).nombre || ' ' || v_jugadores(i).apellido || ' | ' ||
-                                'Posicion: ' || v_jugadores(i).posicion || ' | ' || 'Nacionalidad: ' || v_jugadores(i).nacionalidad 
+                                'Posicion: ' || v_jugadores(i).nom_posicion || ' | ' || 'Nacionalidad: ' || v_jugadores(i).nacionalidad 
                                 || ' | ' || 'Estado: ' || v_jugadores(i).estado);
             DBMS_OUTPUT.PUT_LINE(' - ' || 'Promedio: ' || ROUND(v_jugadores(i).promedio, 2));
             DBMS_OUTPUT.PUT_LINE('=====================================================');
