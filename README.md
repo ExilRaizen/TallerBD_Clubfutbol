@@ -48,6 +48,9 @@ La solución aplica 4 reglas de negocio:
     - `trg_oferta_no_eliminar` (BEFORE DELETE, sentencia).
     - `trg_oferta_auditoria` (AFTER INSERT OR UPDATE, sentencia).
 
+- `docs/Guia_Evaluacion_Parcial2_BDY1103.md` — guía de la evaluación entregada por el profesor
+  (alcance, estructura del informe y de la presentación, rúbrica).
+
 ## Cómo ejecutar
 
 En Oracle SQL Developer, abrir cada archivo y ejecutarlo completo con **F5** (Run Script),
