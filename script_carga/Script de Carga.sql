@@ -1,3 +1,4 @@
+DROP TABLE AUDITORIA_OFERTA CASCADE CONSTRAINTS;
 DROP TABLE COMISION CASCADE CONSTRAINTS;
 DROP TABLE HISTORIAL_CLUB CASCADE CONSTRAINTS;
 DROP TABLE LESION CASCADE CONSTRAINTS;
@@ -172,6 +173,15 @@ CREATE TABLE COMISION (
     CONSTRAINT uq_comision_contrato UNIQUE (id_contrato),
     CONSTRAINT ck_comision_estado   CHECK (estado_pago IN ('PENDIENTE','PAGADA')),
     CONSTRAINT ck_comision_monto    CHECK (monto_comision >= 0)
+);
+
+CREATE TABLE AUDITORIA_OFERTA (
+    id_auditoria  NUMBER GENERATED ALWAYS AS IDENTITY,
+    operacion     VARCHAR2(10) NOT NULL,
+    usuario       VARCHAR2(30) DEFAULT USER NOT NULL,
+    fecha         DATE DEFAULT SYSDATE NOT NULL,
+    CONSTRAINT pk_auditoria_oferta PRIMARY KEY (id_auditoria),
+    CONSTRAINT ck_auditoria_operacion CHECK (operacion IN ('INSERT','UPDATE','DELETE'))
 );
 
 INSERT INTO POSICION (nombre_posicion) VALUES ('Portero');
@@ -3128,6 +3138,12 @@ INSERT INTO COMISION (id_contrato,monto_comision,fecha_pago,estado_pago) VALUES 
 INSERT INTO COMISION (id_contrato,monto_comision,fecha_pago,estado_pago) VALUES (58,39390,TO_DATE('19/12/2025','DD/MM/YYYY'),'PAGADA');
 INSERT INTO COMISION (id_contrato,monto_comision,fecha_pago,estado_pago) VALUES (59,92316,TO_DATE('17/03/2025','DD/MM/YYYY'),'PAGADA');
 INSERT INTO COMISION (id_contrato,monto_comision,fecha_pago,estado_pago) VALUES (60,121450,TO_DATE('20/11/2025','DD/MM/YYYY'),'PAGADA');
+
+-- Lesiones graves recientes (fecha relativa a SYSDATE para que sigan activas al ejecutar)
+INSERT INTO LESION (id_jugador,fecha_lesion,tipo_lesion,gravedad,dias_recuperacion_estimados) VALUES (4,TRUNC(SYSDATE)-10,'Rotura de ligamento cruzado','GRAVE',180);
+INSERT INTO LESION (id_jugador,fecha_lesion,tipo_lesion,gravedad,dias_recuperacion_estimados) VALUES (94,TRUNC(SYSDATE)-30,'Fractura de tibia','GRAVE',150);
+INSERT INTO LESION (id_jugador,fecha_lesion,tipo_lesion,gravedad,dias_recuperacion_estimados) VALUES (101,TRUNC(SYSDATE)-20,'Rotura de tendon de Aquiles','GRAVE',200);
+INSERT INTO LESION (id_jugador,fecha_lesion,tipo_lesion,gravedad,dias_recuperacion_estimados) VALUES (467,TRUNC(SYSDATE)-45,'Lesion de menisco','GRAVE',120);
 
 COMMIT;
 
